@@ -1,78 +1,28 @@
 #include <iostream>
-#include <cstdlib>
+#include "chef.h"
+#include "italianchef.h"
 using namespace std;
-
-
-int game(int maxNum){
-
-
-srand(time(0));
-int quess = 0;
-int randomNumber =(rand() % maxNum) + 1;
-int arvausMaara = 0;
-    for(int i = 0; i==0;)
-    {
-        cout << "arvaa luku!" << endl;
-
-        cin >> quess;
-        if(quess < randomNumber)
-        {
-            cout << "arvaus liian pieni!" << endl;
-            arvausMaara++;
-        }
-
-        else if(quess > randomNumber)
-        {
-            cout << "arvaus liian suuri!" << endl;
-            arvausMaara++;
-        }
-
-        else
-        {
-            cout << "arvaus oli oikein!" << endl;
-            arvausMaara++;
-            i++;
-        }
-    }
-    //cout << "Arvasit: " << arvausMaara << " kertaa!"<< endl;
-    return(arvausMaara);
-}
 
 int main()
 {
+    string kokinNimi;
+    chef kokki_1("Lars");
 
-/*
-    int randomNumber = rand() % 21;
-    cout << "randomnumero:" << randomNumber << endl;
+    kokinNimi = kokki_1.getName();
+
+    cout << "main: kokin nimi on:" << kokinNimi << endl;
+    kokki_1.makeSalad(15);
+    kokki_1.makeSalad(6);
+    kokki_1.makeSalad(17);
+
+    kokki_1.makeSoup(15);
 
 
-        for(int i = 0; i==0;)
-    {
-            cout << "arvaa luku!" << endl;
+    italianChef it_kokki_1("Fabio");
 
-            cin >> quess;
-            if(quess < randomNumber)
-            {
-                cout << "arvaus liian pieni!" << endl;
-            }
+    it_kokki_1.makeSalad(15);
+    it_kokki_1.askSecret("pizza", 20, 5);
 
-            else if(quess > randomNumber)
-            {
-                cout << "arvaus liian suuri!" << endl;
-            }
 
-            else
-            {
-                cout << "arvaus oli oikein!" << endl;
-                i++;
-            }
-    }
-    */
-    int maara = game(20);
-
-    cout << "Arvasit: " << maara << " kertaa!"<< endl;
-return 0;
+    return 0;
 }
-
-
-
