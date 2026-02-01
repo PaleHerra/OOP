@@ -1,78 +1,40 @@
 #include <iostream>
-#include <cstdlib>
+#include "luottotili.h"
+#include "pankkitili.h"
+#include "asiakas.h"
 using namespace std;
-
-
-int game(int maxNum){
-
-
-srand(time(0));
-int quess = 0;
-int randomNumber =(rand() % maxNum) + 1;
-int arvausMaara = 0;
-    for(int i = 0; i==0;)
-    {
-        cout << "arvaa luku!" << endl;
-
-        cin >> quess;
-        if(quess < randomNumber)
-        {
-            cout << "arvaus liian pieni!" << endl;
-            arvausMaara++;
-        }
-
-        else if(quess > randomNumber)
-        {
-            cout << "arvaus liian suuri!" << endl;
-            arvausMaara++;
-        }
-
-        else
-        {
-            cout << "arvaus oli oikein!" << endl;
-            arvausMaara++;
-            i++;
-        }
-    }
-    //cout << "Arvasit: " << arvausMaara << " kertaa!"<< endl;
-    return(arvausMaara);
-}
 
 int main()
 {
-
+   // cout << "Hello World!" << endl;
 /*
-    int randomNumber = rand() % 21;
-    cout << "randomnumero:" << randomNumber << endl;
+    pankkitili pt1("Mirka");
+    pankkitili pt2("Mikko");
+    //Luottotili lt1;
+   // Luottotili lt2("Make", 500);
+    pt2.deposit(100);
+    pt2.withdraw(50);
+    pt1.deposit(50);
+    double luettusaldo = pt2.getBalance();
+    cout << "Mikon saldo on: " << luettusaldo << endl;
+    luettusaldo = pt1.getBalance();
+    cout << "Mirkan saldo on: " << luettusaldo << endl;
 
-
-        for(int i = 0; i==0;)
-    {
-            cout << "arvaa luku!" << endl;
-
-            cin >> quess;
-            if(quess < randomNumber)
-            {
-                cout << "arvaus liian pieni!" << endl;
-            }
-
-            else if(quess > randomNumber)
-            {
-                cout << "arvaus liian suuri!" << endl;
-            }
-
-            else
-            {
-                cout << "arvaus oli oikein!" << endl;
-                i++;
-            }
-    }
+   // lt2.withdraw(100);
+    //lt2.deposit(30);
+    //luettusaldo = lt2.getBalance();
+   // cout << "Maken luotto saldo on: " << luettusaldo << endl;
     */
-    int maara = game(20);
+    asiakas kt1("Miska",1);
+    asiakas kt2("Jaska",2);
 
-    cout << "Arvasit: " << maara << " kertaa!"<< endl;
-return 0;
+    kt1.talletus(200);
+    kt1.showSaldo();
+
+   kt1.tiliSiirto(200, kt2);
+
+    kt2.showSaldo();
+    kt1.showSaldo();
+    //cout << "tilin saldo: " << testi << endl;
+    return 0;
 }
-
-
-

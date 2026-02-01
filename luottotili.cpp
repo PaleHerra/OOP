@@ -1,0 +1,56 @@
+#include "luottotili.h"
+#include <iostream>
+#include "pankkitili.h"
+using namespace std;
+
+
+/*
+     Luottotili();
+    Luottotili(string, double);
+    virtual bool deposit(double) override;
+    virtual bool withdraw(double) override;
+*/
+
+Luottotili::Luottotili()
+{
+
+    cout << "olen luottotili: default konstruktorissa" << endl;
+
+
+}
+
+Luottotili::Luottotili(string om, double lr) : pankkitili(om)
+{
+    cout << "Luottotili luotu: " << om << endl;
+    luottoraja = lr;
+
+}
+
+
+bool Luottotili::deposit (double sum)
+{
+
+    cout << "Olen luottotili: velanmaksussa!" << endl;
+    cout << "Saldo ennen: " << saldo << endl;
+    cout << "Saldo jalkeen: " << sum + saldo << endl;
+    if ((sum < 0) || ((sum + saldo ) > 0 )) return false;
+    saldo += sum;
+    return true;
+}
+
+
+
+bool Luottotili::withdraw (double sum)
+{
+
+    cout << "Olen luottotili: velannostossa!"<< endl;
+    cout << "Luottoraja: " << luottoraja << endl;
+    cout << "Saldo ennen: " << saldo << endl;
+    cout << "Saldo jalkeen: " << saldo - sum << endl;
+
+    if ((sum < 0) || ((std ::abs(saldo)+ sum) > luottoraja)) return false;
+
+    saldo -= sum;
+
+    return true;
+}
